@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{47FE874F-0295-473E-9E09-1733DAD17F5E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SetImagePositions</RootNamespace>
+    <AssemblyName>SetImagePositions</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClearCanvas.Common">
+      <HintPath>..\..\..\..\_SVN\Trunk\WIF\PreCompiled\ClearCanvas.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearCanvas.Desktop">
+      <HintPath>..\..\..\..\_SVN\Trunk\WIF\PreCompiled\ClearCanvas.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearCanvas.Dicom">
+      <HintPath>..\..\..\..\_SVN\Trunk\WIF\PreCompiled\ClearCanvas.Dicom.dll</HintPath>
+    </Reference>
+    <Reference Include="ClearCanvas.ImageViewer">
+      <HintPath>..\..\..\..\_SVN\Trunk\WIF\PreCompiled\ClearCanvas.ImageViewer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="SetImagePosition.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SetImagePosition.Designer.cs">
+      <DependentUpon>SetImagePosition.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="SetImagePosition.resx">
+      <DependentUpon>SetImagePosition.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\_SVN\Trunk\WIF\DataTypes\Wif DataTypes.csproj">
+      <Project>{5CF554B4-5D41-4845-89D9-EB3B5C8C4495}</Project>
+      <Name>Wif DataTypes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\_SVN\Trunk\WIF\UiBase\Wif    UiBase.csproj">
+      <Project>{55A54DC8-F371-43A5-8FD4-B9E7BC24EADB}</Project>
+      <Name>Wif    UiBase</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\_SVN\Trunk\WIF\Ui_Forms\WIF    Ui_Forms.csproj">
+      <Project>{F3765E03-4AA9-4DFE-9F26-8545F4219F7B}</Project>
+      <Name>WIF    Ui_Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\_SVN\Trunk\WIF\WIFBase\WifBase.csproj">
+      <Project>{55EA7842-2A59-4FC2-8C3A-FA53FE0E5F3D}</Project>
+      <Name>WifBase</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

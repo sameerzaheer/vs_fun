@@ -1,0 +1,533 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WifUiForms</name>
+    </assembly>
+    <members>
+        <member name="T:Claron.WIF.Animator3D">
+            <summary>
+            A pop-up form for defining the parameters of an animation. Provides a facility for
+            storing parameter settings in "presets" that can be applied quickly to future
+            data.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Animator3D.UpdateUI(System.Boolean)">
+             <summary>
+            
+             </summary>
+             <param name="EvenIfInvisible">Default value = False</param>
+             <remarks></remarks>
+        </member>
+        <member name="T:Claron.WIF.DatabaseBrowser">
+            <summary>
+            A form for visual access to the DICOM database using the study/series hierarchy.
+            The form is used for selecting series to load, importing and exporting data to a remote
+            DICOM database (SCP), and synchronizing the local database with the contents of folders containing
+            the data.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DatabaseBrowser.StudyFViewGet(System.String)">
+            <summary>
+            Returns filterable study data grid view for the given host.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DatabaseBrowser.StudyViewGet(System.String)">
+            <summary>
+            Returns study data grid view for the given host.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DatabaseBrowser.SeriesViewGet(System.String)">
+            <summary>
+            Returns series grid view for the given host.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.DatabaseBrowser.SelectedStudyView">
+            <summary>
+            Returns currently selected study data grid view.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.DatabaseBrowser.SelectedSeriesView">
+            <summary>
+            Returns currently selected series data grid view.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.DicomBrowserForm">
+            <summary>
+            Form for browsing multiple series stored in a folder (and its sub folder) and selecting
+            one of them to load.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm.MINIMUM_SLICE_STACK_EXTENT_MM">
+            <summary>
+            Minimum slice stack extent in mm.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm.MINIMUM_SLICE_THICKNESS_MM">
+            <summary>
+            Minimum slice thickness in mm.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._dicomSearchEngine">
+            <summary>
+            The DICOM search engine.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._searchPath">
+            <summary>
+            The search path.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._newDicomSeriesFoundDelegate">
+            <summary>
+            New DICOM series found delegate.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._dicomSearchCompletedDelegate">
+            <summary>
+            Search complete delegate.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._patIdToSearchResults">
+            <summary>
+            Dictionary of patient ID's mapping to DicomSearchResult items.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._patIdToListViewItem">
+            <summary>
+            Dictionary of patient ID's mapping to ListViewItem objects.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._patIdToSearchResultsMutex">
+            <summary>
+            Mutex to restrict access to patient ID/results dictionary from multiple threads.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._dicomFilePaths">
+            <summary>
+            The DICOM file paths of the selected series.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._sortAscendingListViewPatient">
+            <summary>
+            If set to True then the patient list view will be sorted in ascending order.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm._sortAscendingListViewSeries">
+            <summary>
+            If set to True then the series list view will be sorted in ascending order.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomBrowserForm.#ctor(System.String)">
+            <summary>
+            Initializes the form.
+            </summary>
+            <param name="searchPath">The search path for DICOM images.</param>
+        </member>
+        <member name="M:Claron.WIF.DicomBrowserForm.InitializeListViews">
+            <summary>
+            Initializes the patient ID list view and the series list view.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.DicomBrowserForm.DicomSearchPath">
+            <summary>
+            The DICOM Search path.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.DicomBrowserForm.DicomFilePaths">
+            <summary>
+            The DICOM file paths of the selected series.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.DicomBrowserForm.DicomSearchCompleted">
+            <summary>
+            Returns True if the DICOM search has been completed.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.DicomBrowserForm.NewDicomSeriesFoundDelegate">
+            <summary>
+            New DICOM series found delegate.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.DicomBrowserForm.DicomSearchCompletedDelegate">
+            <summary>
+            Search complete delegate
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.DicomBrowserForm.PatientListViewSorter">
+            <summary>
+            Sorter for list views.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm.PatientListViewSorter._col">
+            <summary>
+            The column to sort.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.DicomBrowserForm.PatientListViewSorter._ascending">
+            <summary>
+            If set to True then the items will be sorted in ascending order.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomBrowserForm.PatientListViewSorter.#ctor">
+            <summary>
+            Initializes a new sorter.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomBrowserForm.PatientListViewSorter.#ctor(System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new sorter.
+            </summary>
+            <param name="column">The column to sort.</param>
+            <param name="ascending">If set to True then the items will be sorted in ascending order.</param>
+        </member>
+        <member name="T:Claron.WIF.DicomTagsViewer">
+            <summary>
+            Form for displaying the DICOM header tags of a slice stack.
+            </summary>
+            <remarks> Example usage:
+               Dim DicomTags As New DicomTagsViewer
+               DicomTags.ShowOverParentForm(Me, MyCollage.SliceStackShown)
+            </remarks>
+        </member>
+        <member name="T:Claron.WIF.OkCancelDialog">
+            <summary>
+            Dialog to display a message and Ok and Cancel buttons.
+            Ok and Cancel text can be changed. Use ShowDialog to display
+            the dialog box. If Ok and Cancel text are the same then the
+            Cancel button is hidden and only the Ok button is displayed.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.OkCancelDialog.OK_Button_Click(System.Object,System.EventArgs)">
+            <summary>
+            The current OkCancelDialog. If a new OkCancelDialog is opened
+            using ShowDialog() then the current OkCancelDialog is cancelled and
+            the new dialog is set as the current one.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.OkCancelDialog.ShowDialog(System.String,System.String,System.String,System.String)">
+            <summary>
+            Shows the OkCancelDialog dialog.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+            <param name="message">The message for the dialog.</param>
+            <param name="okText">The OK text.</param>
+            <param name="cancelText">The cancel text.</param>
+        </member>
+        <member name="M:Claron.WIF.OkCancelDialog.ShowDialog(System.String,System.String,System.String,System.String,System.Drawing.Point,System.Drawing.Size)">
+            <summary>
+            Shows the OkCancelDialog dialog.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+            <param name="message">The message for the dialog.</param>
+            <param name="okText">The OK text.</param>
+            <param name="cancelText">The cancel text.</param>
+            <param name="parentLocation"></param>
+            <param name="parentSize"></param>
+        </member>
+        <member name="M:Claron.WIF.OkCancelDialog.Show(System.String,System.String,System.String,System.String,System.Drawing.Point,System.Drawing.Size)">
+            <summary>
+            Shows the OkCancelDialog in non-modal mode.
+            </summary>
+            <param name="title">The title of the dialog.</param>
+            <param name="message">The message for the dialog.</param>
+            <param name="okText">The OK text.</param>
+            <param name="cancelText">The cancel text.</param>
+            <param name="parentLocation"></param>
+            <param name="parentSize"></param>
+        </member>
+        <member name="M:Claron.WIF.OkCancelDialog.WndProc(System.Windows.Forms.Message@)">
+            <summary>
+            This overridden WndProc prevents moving the form.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="T:Claron.WIF.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.SavedStates">
+             <summary>
+             Control to allow the user to save and restore states of a collage and associated data.
+             Automatically tiles state buttons within the control box. The buttons provide helpful
+             tooltips to the user.
+            
+             To use the control, place it on the form and, optionally, set its color and StatusLabel properties.
+             When the application starts, assign the CollageToSaveOrRestore property.
+             To store or retrieve application state data, use the BeforeSaving and AfterRestoring events to
+             set and get the data in the AssociatedData property of the collage.
+            
+             The collage state references SliceStack and Bitvol data which is already found on the disk, so
+             the state files will usually be small (a few KB) so they are stored rapidly, and will load
+             and update the collage state rapidly if the data is aready in use by the collage.
+            
+             The directory in which the states are saved and restored is assigned by default to a folder named
+             "SavedStates" in the application data directory (version independent), which is based on the 
+             application assembly information for each application. For example, in Vista, the state files 
+             would be stored in:
+             C:\ProgramData\[company]\[Application name]\SavedStates
+             Referenced data (SliceStacks, Bitvols) that was not directly loaded from files stored elsewhere
+             is stored in a sub-directory named ReferencedData.
+             </summary>
+        </member>
+        <member name="M:Claron.WIF.SavedStates.MySavedStatesDir">
+            <summary>
+            To ensure this is set at run time to the application's special directories,
+            not visual-studio's during design time.
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.SavedStates.StateButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Responds to clicks on state buttons, either saving or restoring the state/
+            </summary>
+            <param name="sender">The clicked button</param>
+            <param name="e"></param>
+        </member>
+        <member name="T:Claron.WIF.SavedStates.BeforeSavingEventHandler">
+            <summary>
+            Fires before a state is saved, to allow the app to add its own state to the AssociatedData
+            dictionary of the collage.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.SavedStates.AfterSavingEventHandler">
+            <summary>
+            Fires after a state is saved.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.SavedStates.BeforeRestoringEventHandler">
+            <summary>
+            Fires before a state is restored, to allow the app to free up any memory-hugging
+            objects.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.SavedStates.AfterRestoringEventHandler">
+            <summary>
+            Fires after a state is fully successfully restored, to allow the app to restore additional state from the
+            AssociatedData dictionary of the collage.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.ScatterPlot">
+            <summary>
+            A control showing a 2D plot of positions.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="F:Claron.WIF.ScatterPlot.CatRGBs">
+            <summary>
+            Note that the number of colors used is as many as there are tissues, and then
+            it wraps around.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.WifButton">
+            <summary>
+            Represents a glass button control.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.WifButton.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Claron.WIF.WifButton"/> class.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.WifButton.InnerBorderColorChangedEvent">
+            <summary>Occurs when the value of the <see cref="P:WifButton.InnerBorderColor" /> property changes.</summary>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnInnerBorderColorChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:WifButton.InnerBorderColorChanged" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="F:Claron.WIF.WifButton.OuterBorderColorChangedEvent">
+            <summary>Occurs when the value of the <see cref="P:WifButton.OuterBorderColor" /> property changes.</summary>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnOuterBorderColorChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:WifButton.OuterBorderColorChanged" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="F:Claron.WIF.WifButton.ShineColorChangedEvent">
+            <summary>Occurs when the value of the <see cref="P:WifButton.ShineColor" /> property changes.</summary>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnShineColorChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:WifButton.ShineColorChanged" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="F:Claron.WIF.WifButton.GlowColorChangedEvent">
+            <summary>Occurs when the value of the <see cref="P:WifButton.GlowColor" /> property changes.</summary>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnGlowColorChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:WifButton.GlowColorChanged" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnSizeChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.SizeChanged" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnClick(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.Click"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnEnter(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.Enter" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnLeave(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.Leave" /> event.
+            </summary>
+            <param name="e">An <see cref="T:System.EventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnKeyDown(System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Raises the <see cref="M:System.Windows.Forms.ButtonBase.OnKeyUp(System.Windows.Forms.KeyEventArgs)" /> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.KeyEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnKeyUp(System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Raises the <see cref="M:System.Windows.Forms.ButtonBase.OnKeyUp(System.Windows.Forms.KeyEventArgs)" /> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.KeyEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnMouseDown(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.MouseDown" /> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnMouseUp(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.MouseUp" /> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnMouseMove(System.Windows.Forms.MouseEventArgs)">
+            <summary>
+            Raises the <see cref="M:System.Windows.Forms.Control.OnMouseMove(System.Windows.Forms.MouseEventArgs)" /> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.MouseEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnMouseEnter(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.MouseEnter"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnMouseLeave(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.MouseLeave"/> event.
+            </summary>
+            <param name="e">The <see cref="T:System.EventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the <see cref="M:System.Windows.Forms.ButtonBase.OnPaint(System.Windows.Forms.PaintEventArgs)" /> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs" /> that contains the event data.</param>
+        </member>
+        <member name="F:Claron.WIF.WifButton.PaintEvent">
+            <summary>
+            Occurs when the control is redrawn.
+            </summary>
+        </member>
+        <member name="F:Claron.WIF.WifButton.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.WifButton.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Claron.WIF.WifButton.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.WifButton.BackColor">
+            <summary>
+            Gets or sets the background color of the control.
+            </summary>
+            <returns>A <see cref="T:System.Drawing.Color" /> value representing the background color.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.ForeColor">
+            <summary>
+            Gets or sets the foreground color of the control.
+            </summary>
+            <returns>The foreground <see cref="T:System.Drawing.Color" /> of the control.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.OuterBorderColor">
+            <summary>
+            Gets or sets the outer border color of the control.
+            </summary>
+            <returns>A <see cref="T:System.Drawing.Color" /> value representing the color of the outer border.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.FadeOnFocus">
+            <summary>
+            Gets or sets a value indicating whether the button should fade in and fade out when it's getting and loosing the focus.
+            </summary>
+            <value><c>true</c> if fading with changing the focus; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:Claron.WIF.WifButton.ActivationMode">
+            <summary>
+            Determines whether the button will act as a standard button, an on/off toggle
+            (check box), or a selector (radio button) exclusive in its container.
+            </summary>
+            <value>The new mode value.</value>
+            <returns>The current mode.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.Enabled">
+            <summary>
+            Gets or sets the foreground color of the control.
+            </summary>
+            <returns>The enabled state of the control.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.State">
+            <summary>
+            Gets the state of the button control.
+            </summary>
+            <value>The state of the button control.</value>
+        </member>
+        <member name="P:Claron.WIF.WifButton.FlatAppearance">
+            <summary>This property is not relevant for this class.</summary>
+            <returns>This property is not relevant for this class.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.FlatStyle">
+            <summary>This property is not relevant for this class.</summary>
+            <returns>This property is not relevant for this class.</returns>
+        </member>
+        <member name="P:Claron.WIF.WifButton.UseVisualStyleBackColor">
+            <summary>This property is not relevant for this class.</summary>
+            <returns>This property is not relevant for this class.</returns>
+        </member>
+    </members>
+</doc>

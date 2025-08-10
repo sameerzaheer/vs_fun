@@ -1,0 +1,716 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WifDatabase</name>
+    </assembly>
+    <members>
+        <member name="T:Claron.WIF.Utils">
+             <summary>
+            
+             </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.ParseDicomDate(System.String)">
+            <summary>
+            Returns date string as yyyy/mm/dd (null if parse fails).
+            Supports DICOM formats yyyymmdd and yyyy.mm.dd.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.ParseDicomTime(System.String)">
+            <summary>
+            Returns time string as hh:mm:ss (null if parse fails).
+            Supports DICOM formats hh:mm:ss.ffffff] and hhmmss.ffffff].
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.SafeRaiseEvent(System.Delegate,System.Object[])">
+            <summary>
+            Manually steps through an invocation list of delegate handlers for the event.
+            If a "dead" delegate is found (cannot be invoked), removes it from the list.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.GetDriveName(System.String)">
+            <summary>
+            Finds a drive name for a given volume label. Returns Nothing if not found.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.GetDriveLabel(System.String)">
+            <summary>
+            Finds a volume label for a given drive name. Returns Nothing if not found.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreateSecondaryCaptureGrayscaleByteDicomFile(System.Byte[],System.UInt16,System.UInt16,Claron.WIF.SliceStack,System.String,System.String,System.String)">
+            <summary>
+            Stores input pixel data into a DICOM file, which conforms to the
+            Multiframe Grayscale Byte Secondary Capture Image IOD specification.
+            If UID parameters are not provided, new valid values are created.
+            </summary>
+            <param name="ByteArray"></param>
+            <param name="Rows"></param>
+            <param name="Columns"></param>
+            <param name="SS"></param>
+            <param name="StudyUid"> Default value = null</param>
+            <param name="SeriesUid"> Default value = null</param>
+            <param name="SopInstanceUid"> Default value = null</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreateSecondaryCaptureDicomFile(System.UInt16[],System.UInt16,System.UInt16,Claron.WIF.SliceStack,System.String,System.String,System.String)">
+            <summary>
+            Stores input pixel data into a DICOM file, which conforms to the
+            Secondary Capture Image IOD specification.
+            If UID parameters are not provided, new valid values are created.
+            </summary>
+            <param name="Pixels"></param>
+            <param name="Rows"></param>
+            <param name="Columns"></param>
+            <param name="SS"></param>
+            <param name="StudyUid"> Default value = null</param>
+            <param name="SeriesUid"> Default value = null</param>
+            <param name="SopInstanceUid"> Default value = null</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreateSecondaryCaptureGrayscaleByteDicomFile(System.Drawing.Bitmap,Claron.WIF.SliceStack,System.String,System.String,System.String)">
+            <summary>
+            Stores input bitmap data into a DICOM file, which conforms to the
+            Secondary Capture Image IOD specification.
+            If UID parameters are not provided, new valid values are created.
+            </summary>
+            <param name="BM"></param>
+            <param name="SS"></param>
+            <param name="StudyUid"> Default value = null</param>
+            <param name="SeriesUid"> Default value = null</param>
+            <param name="SopInstanceUid"> Default value = null</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreateBitmapFromDicomFile(System.String)">
+            <summary>
+            Creates Bitmap out of pixels of input DICOM file
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreateSecondaryCaptureDicomFile_RGB(System.Drawing.Bitmap,Claron.WIF.SliceStack,System.String,System.String,System.String)">
+            <summary>
+            Stores input bitmap data into a DICOM file, which conforms to the
+            Secondary Capture Image IOD specification.
+            If UID parameters are not provided, new valid values are created.
+            </summary>
+            <param name="BM"></param>
+            <param name="SS"></param>
+            <param name="StudyUid"> Default value = null</param>
+            <param name="SeriesUid"> Default value = null</param>
+            <param name="SopInstanceUid"> Default value = null</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="F:Claron.WIF.Utils._dcmTagKeyDict">
+            <summary>
+            The DICOM tag key dictionary.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreateBitmapFromDicomFile_RGB(System.String)">
+            <summary>
+            Creates Bitmap out of pixels of input DICOM file
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.CreatePreviewBitmapFromDicomFile_RGB(System.String)">
+            <summary>
+            Transforms animation DICOM file for ImageU12 class for a preview
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.Utils.DcmTagInfo">
+            <summary>
+            An entry in DcmDictionary.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.DcmTagInfo.#ctor">
+            <summary>
+            Parameterless constructor for enabling the serialization
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.DcmTagInfo.#ctor(System.Int32,System.String,System.String,System.String,System.String,System.Boolean[],System.Boolean)">
+            <summary>
+            Instance constructor
+            </summary>
+            <param name="tag"></param>
+            <param name="name"></param>
+            <param name="vr"></param>
+            <param name="vm"></param>
+            <param name="header"></param>
+            <param name="dcmEntities"></param>
+            <param name="visible"></param>
+            <remarks></remarks>
+        </member>
+        <member name="T:Claron.WIF.Utils.DcmDictionaryConfigSection">
+            <summary>
+            DICOM dictionary configuration class for storing DICOM dictionary entries in embedded resource.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.DcmDictionaryConfigSection.#ctor">
+            <summary>
+            Parameterless constructor for xml serialization
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.DcmDictionaryConfigSection.Load">
+            <summary>
+            Load the DICOM dictionary from embedded resource
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="P:Claron.WIF.Utils.DcmDictionaryConfigSection.DcmTags">
+            <summary>
+            Dicom tag entries
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.Utils.DcmDictionary">
+            <summary>
+            Includes additional information about each DICOM tag for SQL database storage and UI display.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.Utils.DcmDictionary.#cctor">
+            <summary>
+            Shared constructor initialize the singleton DICOM dictionary
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.Utils.DcmDictionary.#ctor">
+            <summary>
+            Private constructor to ensure only one instance can be created by static constructor
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="P:Claron.WIF.Utils.DcmDictionary.Instance">
+            <summary>
+            Singleton dictionary
+            </summary>
+            <value></value>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="T:Claron.WIF.Utils.StudyState">
+            <summary>
+            Note, the order of the states are significant
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:Claron.WIF.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Claron.WIF.Properties.Resources.DicomDbSchema_V1_0_0_0">
+             <summary>
+               Looks up a localized string similar to SET NUMERIC_ROUNDABORT OFF
+            GO
+            SET ANSI_PADDING, ANSI_WARNINGS, CONCAT_NULL_YIELDS_NULL, ARITHABORT, QUOTED_IDENTIFIER, ANSI_NULLS ON
+            GO
+            IF EXISTS (SELECT * FROM tempdb..sysobjects WHERE id=OBJECT_ID(&apos;tempdb..#tmpErrors&apos;)) DROP TABLE #tmpErrors
+            GO
+            CREATE TABLE #tmpErrors (Error int)
+            GO
+            SET XACT_ABORT ON
+            GO
+            SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+            GO
+            BEGIN TRANSACTION
+            GO
+            PRINT N&apos;Creating [dbo].[ServiceAudit]&apos;
+            GO
+            CREATE TABLE [dbo].[ServiceAudit]
+            (
+            [StudyInstanceUID] [nchar] (64) COLLATE  [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:Claron.WIF.Properties.Resources.DicomDictionaryConfig">
+            <summary>
+              Looks up a localized string similar to &lt;DcmDictionaryConfigSection type=&quot;Claron.WIF.DcmDictionaryConfigSection, WifDatabase&quot;&gt;
+                 &lt;DcmTags&gt;
+                   &lt;DcmTagInfo&gt;
+                     &lt;Name&gt;PatientName&lt;/Name&gt;
+                     &lt;VR&gt;PN&lt;/VR&gt;
+                     &lt;VM&gt;1&lt;/VM&gt;
+                     &lt;DcmEntities&gt;
+                       &lt;boolean&gt;true&lt;/boolean&gt;
+                       &lt;boolean&gt;false&lt;/boolean&gt;
+                       &lt;boolean&gt;false&lt;/boolean&gt;
+                       &lt;boolean&gt;false&lt;/boolean&gt;
+                     &lt;/DcmEntities&gt;
+                     &lt;Header&gt;Patient Name&lt;/Header&gt;
+                     &lt;Visible&gt;true&lt;/Visible&gt;
+                     &lt;Tag&gt;1048592&lt;/Ta [rest of string was truncated]&quot;;.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet">
+             <summary>
+            Represents a strongly typed in-memory cache of data.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.DestinationDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.TransferListDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.OutputTableDataTable">
+             <summary>
+            Represents the strongly named DataTable class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.DestinationRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.TransferListRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.OutputTableRow">
+             <summary>
+            Represents strongly named DataRow class.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.DestinationRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.TransferListRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferDataSet.OutputTableRowChangeEvent">
+             <summary>
+            Row event argument class
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.DestinationTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.TransferListTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.OutputTableTableAdapter">
+             <summary>
+            Represents the connection and commands used to retrieve and save data.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.DicomDatabase">
+            <summary>
+            A class derived from SqlDatabase, provides access to the SQL database
+            which archives DICOM data on the local cache.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.SqlDatabase">
+            <summary>
+            Base class which provides essential SQL database connectivity.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.Exists">
+            <summary>
+            Checks whether the SQL database has been created.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.Delete">
+            <summary>
+            Deletes the SQL database if it already exists.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.Create(System.String,System.Boolean)">
+            <summary>
+            Creates the SQL database (related files will be written to the given Path).
+            </summary>
+            <param name="Path"></param>
+            <param name="Overwrite"> Default value = true</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.CreateOrUpgradeSchema">
+            <summary>
+            Create or upgrade the database schema to the latest version
+            </summary>
+            <remarks>
+            The database schema create/update SQL scripts are stored as embedded resources in this assembly, this method
+            executes the scripts sequentially, and updates the database schema to the latest version.
+            </remarks>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.DeleteTable(System.String)">
+            <summary>
+            Deletes existing SQL table of a given name.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.ExecuteSQLNonQuery(System.String,System.String,System.Data.SqlClient.SqlParameter)">
+             <summary>
+            
+             </summary>
+             <param name="sqlStr"></param>
+             <param name="connStr"></param>
+             <param name="Parameter"> Default value = null</param>
+             <returns></returns>
+             <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.SqlDatabase.ExecuteStoredProcedure(System.String,System.String,System.Data.SqlClient.SqlParameter)">
+             <summary>
+            
+             </summary>
+             <param name="spName"></param>
+             <param name="connStr"></param>
+             <param name="Parameter">Default value = null</param>
+             <returns></returns>
+             <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(System.String,System.String@)">
+            <summary>
+            Inserts DICOM image at a given path to the database.
+            Physical file is moved from the specified location to the cache location.
+            Upon failure an error message is provided.
+            </summary>
+            <param name="DcmFilePath"></param>
+            <param name="ErrStr"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(System.String)">
+            <summary>
+            Inserts DICOM image at a given path to the database.
+            Physical file is moved from the specified location to the cache location.
+            Upon failure an error message is provided.
+            </summary>
+            <param name="DcmFilePath"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(System.String,System.Boolean,System.String@,System.String@,System.String@)">
+            <summary>
+            Inserts DICOM image at a given path to the database.
+            Physical file is moved from the specified location to the cache location.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(System.String,System.Boolean,System.String@,System.String@)">
+            <summary>
+            Inserts DICOM image at a given path to the database.
+            Physical file is moved from the specified location to the cache location.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertSecondaryCaptureDicomImage(System.String,ClearCanvas.Dicom.DicomFile,System.Int32,System.String@,System.String@)">
+            <summary>
+            Archives SC DICOM image record to the SQL database
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(ClearCanvas.Dicom.DicomFile,System.Boolean,System.String@)">
+            <summary>
+            Inserts DICOM image to the database.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(ClearCanvas.Dicom.DicomFile,System.String@)">
+            <summary>
+            Inserts DICOM image to the database.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.DeleteImage(System.String,System.String@)">
+            <summary>
+            Removes DICOM image record from the SQL database and deletes the file from the local cache.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.DeleteSeries(System.String,System.String@)">
+            <summary>
+            Delete Series
+            </summary>
+            <param name="SeriesUid"></param>
+            <param name="ErrStr"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.DeleteStudy(System.String,System.String@)">
+            <summary>
+            Delete Study
+            </summary>
+            <param name="StudyUid"></param>
+            <param name="ErrStr"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryImage(System.String)">
+            <summary>
+            Queries DICOM image from the database using a given UID. Returns Nothing upon failure.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryImageUidsInStudy(System.String)">
+            <summary>
+            Query image uids in study table
+            </summary>
+            <param name="StudyUid"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryImageUidsInSeries(System.String)">
+            <summary>
+            Query image uids in series
+            </summary>
+            <param name="SeriesUid"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QuerySeriesUidsInStudy(System.String)">
+            <summary>
+            Query series uids in study table
+            </summary>
+            <param name="StudyUid"></param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryReferencedSeriesUid(System.String,Claron.WIF.Utils.DcmEntity)">
+            <summary>
+            Queries a referenced series UID (private DICOM tag), given a UID value and a DICOM query entity.
+            Applicable (derived) entities can be either a series or a mask.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryDicomTag(System.UInt32,System.String,Claron.WIF.Utils.DcmEntity,System.Boolean)">
+            <summary>
+            Queries an individual DICOM tag, given a UID value and a DICOM query entity.
+            Duplicates are to be excluded from the query if Distinct flag is set to true.
+            </summary>
+            <param name="Tag"></param>
+            <param name="Uid"></param>
+            <param name="Entity"></param>
+            <param name="Distinct"> Default value = False</param>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryDicomTags(System.Collections.Generic.Dictionary{System.UInt32,System.String},Claron.WIF.Utils.DcmEntity,System.Data.DataTable,System.Boolean)">
+            <summary>
+            Queries a set of DICOM tags, given a DICOM query entity. If a non-empty value is provided for
+            a tag, the value is used in the WHERE clause of the query. ResultTable is populated
+            with query results (values of all given tags) and should be initialized by the caller.
+            Duplicates are to be excluded from the query if Distinct flag is set to true.
+            </summary>
+            <param name="Tags"></param>
+            <param name="Entity"></param>
+            <param name="ResultTable"></param>
+            <param name="Distinct"> Default value = false</param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertCache(System.String,System.String,System.String)">
+             <summary>
+            
+             </summary>
+             <param name="DriveLabel"></param>
+             <param name="Directory"></param>
+             <param name="Receiver"> Default value = "0"</param>
+             <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertSeriesPreview(System.String,System.String@)">
+            <summary>
+            Creates a preview image of specified pixel dimensions for a given series
+            (upon failure a blank all-black preview image is created).
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertAnimationSeriesPreview(System.String,System.String,System.String@)">
+            <summary>
+            Creates a preview image of specified pixel dimensions for a given series
+            (upon failure a blank all-black preview image is created).
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertMask(ClearCanvas.Dicom.DicomFile,System.String@)">
+            <summary>
+            Archives mask record to the SQL database and saves the mask DICOM file to the local cache.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryMask(System.String)">
+            <summary>
+            Queries mask DICOM file from the database using a given UID. Returns Nothing upon failure.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryPath(System.String,Claron.WIF.Utils.DcmEntity)">
+            <summary>
+            Returns the path to the location on the local cache where a DICOM entity with
+            a given UID is stored. Returns null upon failure.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(System.String,ClearCanvas.Dicom.DicomFile,System.Boolean,System.String@)">
+            <summary>
+            Archives DICOM image record to the SQL database and saves the image file to the local cache.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.InsertImage(System.String,ClearCanvas.Dicom.DicomFile,System.String@)">
+            <summary>
+            Archives DICOM image record to the SQL database and saves the image file to the local cache.
+            Upon failure an error message is provided.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.GetJoinDicomTable(Claron.WIF.Utils.DcmEntity)">
+            <summary>
+            Returns the (join) DICOM table on which to perform the query.
+            If applicable, constructs a two- or three-way table join.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.DicomDatabase.QueryDicomTagsRemotely(Claron.WIF.Utils.DcmEntity,System.String,System.Object)">
+             <summary>
+            
+             </summary>
+             <param name="Entity"></param>
+             <param name="CurrStudyUid">If Entity=DcmEntity.Study then Default value of CurrStudyUid = Nothing </param>
+             <param name="Datasource"></param>
+             <remarks></remarks>
+        </member>
+        <member name="T:Claron.WIF.AutoTechRmEventArgs">
+            <summary>
+            Encapsulates arguments for an event sent by the AutoTech to its clients.
+            IRYNA: So far used only for testing two-way communication.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.AutoTechRmEventArgs.#ctor(System.String)">
+             <summary>
+            
+             </summary>
+             <param name="Message">Default value = ""</param>
+             <remarks></remarks>
+        </member>
+        <member name="T:Claron.WIF.ServiceCycleRmEventArgs">
+            <summary>
+            Encapsulates arguments for an event sent by the ServiceCycle to AutoTech.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.Chatter">
+            <summary>
+            Hosted on the server (AutoTech), remotable to clients (ServiceCycle and Visualizer).
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.ServiceCycleListener">
+            <summary>
+            Hosted on the client (ServiceCycle), forwards events from the AutoTech to the ServiceCycle.
+            NOTE: A direct event callback to a handler method within the client cannot be used because
+            the server has no declaration of the type of where the callback would point to.
+            </summary>
+        </member>
+        <member name="T:Claron.WIF.StateDatabase">
+            <summary>
+            A class derived from SqlDatabase, provides access to the SQL database
+            which tracks states of activities on the OSS.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryArrivalStudyUids">
+            <summary>
+            Queries all arrivals. Returns a collection of their study UIDs, if any.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryArrivalStudyUids(Claron.WIF.Utils.StudyState)">
+            <summary>
+            Queries all arrivals in a given state. Returns a collection of their study UIDs, if any.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryArrival(System.String)">
+            <summary>
+            Queries whether an arrival record exists for a given Study UID.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryArrivalEndTime(System.String)">
+            <summary>
+            Queries end time (arrival of the most recent file) for a given arrival.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryFirstReadyForServiceStudy">
+            <summary>
+            Query the first ready for service study
+            </summary>
+            <returns></returns>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryArrivalState(System.String)">
+            <summary>
+            Queries state of a given arrival.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.UpdateArrivalState(System.String,Claron.WIF.Utils.StudyState,System.String)">
+            <summary>
+            Updates arrival's state.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.InsertArrival(System.String)">
+            <summary>
+            Records a new study arrival.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.DeleteArrival(System.String)">
+            <summary>
+            Delete a study arrival
+            </summary>
+            <param name="StudyUid"></param>
+            <remarks></remarks>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.InsertService(System.String)">
+            <summary>
+            Records a new service.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryService(System.String)">
+            <summary>
+            Queries whether a service record exists for a given study UID.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryServiceStudyUid(System.Int32)">
+            <summary>
+            Queries study UID for a given service process ID.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryServiceState(System.String)">
+            <summary>
+            Queries service state of a given study.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.QueryServiceRunTimeSeconds(System.String)">
+            <summary>
+            Queries the total run time of the service for a given study, in seconds.
+            Returns 0 if the service has not yet completed or if no such record exists.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.UpdateCompletedService(System.String)">
+            <summary>
+            Updates the end time of the service and nullifies the PID of the service cycle.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.UpdateRestartedService(System.String)">
+            <summary>
+            Increments the number of service restarts, and resets the time and state info for the
+            restarted service.
+            </summary>
+        </member>
+        <member name="M:Claron.WIF.StateDatabase.UpdateServiceState(System.String,Claron.WIF.Utils.StudyState,System.String)">
+            <summary>
+            Updates state of service.
+            </summary>
+        </member>
+    </members>
+</doc>
